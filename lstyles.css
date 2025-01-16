@@ -1,0 +1,160 @@
+*,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input {
+            border-radius: 20px;
+            border: 1px solid #c0c0c0;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+        .page-link {
+            text-align: end;
+            font-size: 12px;
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .page-link:hover {
+            color: #0056b3;
+        }
+
+        .form-btn {
+            padding: 12px;
+            border-radius: 20px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .form-btn:active {
+            background-color: #004494;
+            transform: scale(0.98);
+        }
+
+        .sign-up-label {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .sign-up-link {
+            color: #007BFF;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .sign-up-link:hover {
+            color: #0056b3;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .apple-login-button,
+        .google-login-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .apple-login-button {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+
+        .apple-login-button:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+
+        .google-login-button {
+            border: 2px solid #747474;
+            color: #747474;
+            background: #fff;
+        }
+
+        .google-login-button:hover {
+            background-color: #f0f0f0;
+            border-color: #555;
+            color: #555;
+        }
+
+        .apple-icon,
+        .google-icon {
+            margin-right: 8px;
+        }

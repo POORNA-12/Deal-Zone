@@ -1,0 +1,151 @@
+/* Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f8f9fc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1024px) {
+    .main-container {
+        flex-direction: row;
+        padding: 30px;
+    }
+}
+
+/* Sidebar Styles */
+/* Sidebar Styles */
+.sidebar {
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* To prevent the enlarged image from spilling outside the sidebar */
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid ;
+    object-fit: cover;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.5); /* Scale up the image to 1.5 times its size */
+    border-color: #2E7D32; /* Darker green on hover */
+    z-index: 10; /* Bring the image to the front on hover */
+}
+
+/* Optional shadow effect for the enlarged image */
+.profile-pic:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.sidebar h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #333;
+    margin: 15px 0 5px;
+}
+
+.contact-info {
+    font-size: 1em;
+    color: #666;
+    margin-top: 15px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    font-size: 1em;
+    color: #444;
+}
+
+.contact-info i {
+    color: #4CAF50; /* Icon color */
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.contact-info p:hover i {
+    color: #2E7D32; /* Darker green on hover */
+}
+
+.contact-info p:hover {
+    color: #4CAF50;
+    transition: color 0.3s ease;
+}
+.content {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fc;
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }

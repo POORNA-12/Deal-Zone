@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="rstyles.css">
+</head>
+<body>
+    <div class="form-container">
+        <form class="form" action="register.php" method="POST">
+            <p class="title">Register</p>
+            <p class="message">Sign up now and get full access to our app.</p>
+            <div class="flex">
+                <label>
+                    <span>Firstname</span>
+                    <input required type="text" name="firstname" class="input" placeholder="Enter your first name">
+                </label>
+                <label>
+                    <span>Lastname</span>
+                    <input required type="text" name="lastname" class="input" placeholder="Enter your last name">
+                </label>
+            </div>
+            <label>
+                <span>Email</span>
+                <input required type="email" name="email" class="input" placeholder="Enter your email">
+            </label>
+            <label>
+                <span>Password</span>
+                <input required type="password" name="password" class="input" placeholder="Enter your password">
+            </label>
+            <label>
+                <span>Confirm Password</span>
+                <input required type="password" name="confirm_password" class="input" placeholder="Confirm your password">
+            </label>
+            <button type="submit" name="register" class="button">Submit</button>
+            <p class="signin">Already have an account? <a href="login.html">Sign in</a></p>
+        </form>
+    </div>
+</body>
+</html>

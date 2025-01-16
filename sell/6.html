@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details Form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f0fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            animation: fadeInDown 1s;
+        }
+        .form-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .book-image {
+            width: 400px;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+            border-radius: 20px;
+            animation: fadeIn 2s;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #0f0505;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .file-inputs {
+            display: flex;
+            flex-direction: column;
+        }
+        .file-inputs input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .file-names {
+            margin-top: 10px;
+            color: #555;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Book</h1>
+        <form action="book.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="book-title">Book Title:</label>
+                <input type="text" id="book-title" name="book-title" required>
+            </div>
+            <div class="form-group">
+                <label for="book-author">Author:</label>
+                <input type="text" id="book-author" name="book-author" required>
+            </div>
+            <div class="form-group">
+                <label for="book-publisher">Publisher:</label>
+                <input type="text" id="book-publisher" name="book-publisher">
+            </div>
+            <div class="form-group">
+                <label for="book-isbn">ISBN:</label>
+                <input type="text" id="book-isbn" name="book-isbn" pattern="\d{13}" title="Please enter a 13-digit ISBN">
+            </div>
+            <div class="form-group">
+                <label for="book-year">Year of Publication:</label>
+                <input type="number" id="book-year" name="book-year" required>
+            </div>
+            <div class="form-group">
+                <label for="book-price">Price:</label>
+                <input type="number" id="book-price" name="book-price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="book-genre">Genre:</label>
+                <select id="book-genre" name="book-genre">
+                    <option value="">Select a genre</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="science-fiction">Science Fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="romance">Romance</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="biography">Biography</option>
+                    <option value="self-help">Self-Help</option>
+                    <option value="historical">Historical</option>
+                    <option value="poetry">Poetry</option>
+                    <option value="young-adult">Young Adult (YA)</option>
+                    <option value="children">Children's Books</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="book-condition">Condition:</label>
+                <select id="book-condition" name="book-condition" required>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="book-description">Description:</label>
+                <textarea id="book-description" name="book-description" rows="4" required></textarea>
+            </div>
+            <div class="form-group file-inputs">
+                <label for="book-images">Upload Book Images (up to 3):</label>
+                <input type="file" id="book-images" name="book-images[]" accept="image/*" multiple onchange="displayFileNames()">
+                <div class="file-names" id="file-names"></div>
+            </div>
+            <div class="submit-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function displayFileNames() {
+            const input = document.getElementById('book-images');
+            const fileNamesContainer = document.getElementById('file-names');
+            fileNamesContainer.innerHTML = '';
+    
+            for (const file of input.files) {
+                const li = document.createElement('li');
+                li.textContent = file.name;
+                fileNamesContainer.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>

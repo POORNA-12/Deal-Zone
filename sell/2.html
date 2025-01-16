@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorbike Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f0fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            animation: fadeInDown 1s;
+        }
+        .form-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .bike-image {
+            width: 400px;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+            border-radius: 20px;
+            animation: fadeIn 2s;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #0f0505;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .file-inputs {
+            display: flex;
+            flex-direction: column;
+        }
+        .file-inputs input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .file-names {
+            margin-top: 10px;
+            color: #555;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Motorbike</h1>
+        <div class="image-container">
+            <img src="/Photos/2.jpeg" alt="Motorbike Image" class="bike-image">
+        </div>
+        <form action="/submit-bike-details" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="bike-make">Bike Name:</label>
+                <input type="text" id="bike-make" name="bike-make" required>
+            </div>
+            <div class="form-group">
+                <label for="bike-model">Bike Model:</label>
+                <input type="text" id="bike-model" name="bike-model" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year of Manufacture:</label>
+                <input type="number" id="year" name="year" required>
+            </div>
+            <div class="form-group">
+                <label for="mileage">Mileage (in miles):</label>
+                <input type="number" id="mileage" name="mileage" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="vehicle-registration">Vehicle Registration:</label>
+                <select id="vehicle-registration" name="vehicle-registration" required>
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes, I registered</option>
+                    <option value="no">No, I don't</option>
+                    <option value="few-documents">I have a few documents</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distance-driven">Distance Driven (in kilometers):</label>
+                <input type="number" id="distance-driven" name="distance-driven" required>
+            </div>
+            <div class="form-group">
+                <label for="bike-description">Description:</label>
+                <textarea id="bike-description" name="bike-description" rows="4" required></textarea>
+            </div>
+            <div class="form-group file-inputs">
+                <label for="bike-images">Upload Bike Images (up to 3):</label>
+                <input type="file" id="bike-images" name="bike-images[]" accept="image/*" multiple onchange="displayFileNames()">
+                <div class="file-names" id="file-names"></div>
+            </div>
+            <div class="form-group">
+                <label for="bike-360-view">Upload 360° View of the Bike:</label>
+                <input type="file" id="bike-360-view" name="bike-360-view" accept="video/*">
+            </div>
+            <div class="submit-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function displayFileNames() {
+            const input = document.getElementById('bike-images');
+            const fileNamesDiv = document.getElementById('file-names');
+            fileNamesDiv.innerHTML = '';
+
+            for (let i = 0; i < input.files.length; i++) {
+                const fileName = document.createElement('div');
+                fileName.textContent = input.files[i].name;
+                fileNamesDiv.appendChild(fileName);
+            }
+        }
+        const yearInput = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        yearInput.max = currentYear - 10;
+    </script>
+</body>
+</html>
